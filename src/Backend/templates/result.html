@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>十度一下，你就知道</title>
+        <style type="text/css">
+            .head{  color:#fff;position:absolute;right:0;top:0;margin:19px 0 5px;padding:0 96px 0 0;}
+            .head a:hover{color:#00c}
+            .centers{text-align: center;}
+            .sone{border: 1px solid #b6b6b6;background: #fff;display: inline-block;vertical-align:top;width: 539px;height:34px;border-color: #b8b8b8 #ccc #ccc #b8b8b8;overflow: hidden;}
+            input{border: 0;padding: 0;}
+            .btn_out{width: 100px; height: 36px; color: #fff; font-size: 15px; letter-spacing: 1px; background: #3385ff;}
+            .btn_move{width: 100px; height: 36px; color: #fff; font-size: 15px; letter-spacing: 1px; background: #3385ffCC;}
+        </style>
+        </head>
+        <body>
+            <div class="centers">
+                <h1>十 度</h1>
+                <form action="/search/" method="get">
+                    <input class="sone" type="text" name="wd" maxlength="255" placeholder="请输入查询内容的合取范式，如：(data | math | science) & (computer | !system)">
+                    <input class="btn_out" type="submit" value="十度一下" onmousemove="this.className='btn_move'" onmouseout="this.className='btn_out'">
+                </form>
+            </div>
+        </body>
+
+        {%if len_res == 0 %}
+            <p>
+                抱歉，未找到结果！
+            </p>
+        {%else%}
+            <p>
+                共找到{{len_res}}条结果, 用时{{search_time}}秒
+            </p>
+
+        {%for r in res %}
+            <p>
+                <a href="/cacm/{{r.name}}" target=”_blank">{{r.name}}:</a><br>
+                {{r.title}}        
+            </p>
+        {%endfor%}
+
+        Pages:
+        {% for num in range_page %}
+            {% if num == currentPage %}
+                <a href="/search/?wd={{wd}}&page={{num}}">{{num}}</a>
+            {% else %}
+                <a href="/search/?wd={{wd}}&page={{num}}">{{num}}</a>
+            {% endif %}
+        {% endfor %}
+
+        <br>
+        <br>
+        {% if num_page != 1 %}
+            <a href="/search/?wd={{wd}}&page={{res.previous_page_number}}">上一页</a>
+        {% endif %}
+
+        {% if num_page != len_page %}
+            <a href="/search/?wd={{wd}}&page={{res.next_page_number}}">下一页</a>
+        {% endif %}
+
+        <p>
+            共{{len_page}}页，当前第{{num_page}}页
+        </p>
+
+        {% endif %}
+
+    </body>
+</html>
