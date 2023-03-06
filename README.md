@@ -34,7 +34,7 @@ e.g. [localhost:8080](localhost:8080)
 
 ## 界面说明
 
-本次大作业是在第一次大作业的基础上做增量开发，由于检索模型不限，故使用的还是布尔模型。
+本次大作业是在[第一次大作业](https://github.com/coutyou/THU-IR-BIG-HW-1)的基础上做增量开发，由于检索模型不限，故使用的还是布尔模型。
 
 本次大作业添加的主要功能为使用Django完成了界面交互，这里模仿百度的界面，做了一个“十度”，CSS样式参考了[https://blog.csdn.net/qq_35003667/article/details/78266517](https://blog.csdn.net/qq_35003667/article/details/78266517)并做了一定程度的改进。
 
